@@ -1,0 +1,205 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    font-size: 200%;
+    font-family: monospace;
+    color: #112d4e;
+    background-color: #f9f7f7;
+}
+
+.app {
+    position: relative;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 49% 49%;
+    gap: 20px;
+    background-color: #dbe2ef;
+    margin: 80px;
+    height: 80dvh;
+    border-radius: 10px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 80%;
+    padding: 0px 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #3f72af;
+}
+
+button {
+    font: inherit;
+    color: #112d4e;
+    font-family: inherit;
+    background-color: #dbe2ef;
+}
+button:hover {
+    background-color: #b3c3e1;
+}
+
+.header button {
+    width: 100px;
+    font-size: inherit;
+    border: none;
+    border-radius: 10px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.end {
+    padding-bottom: 50px;
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    left: 10%;
+    top: 10%;
+    color: tomato;
+    z-index: 1;
+    background-color: #3f72af88;
+    border: #3f72af solid 2px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    user-select: none;
+}
+
+.keyboard {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.key {
+    width: 80%;
+    height: 80%;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+}
+
+.word {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.letter {
+    margin: 10px;
+}
+
+.underline {
+    background-color: #333;
+    width: 100%;
+    height: 10px;
+}
+
+.draw {
+    grid-row: span 2;
+    display: flex;
+    justify-content: center;
+    .DrawContainer {
+        width: 300px;
+        height: 400px;
+        position: relative;
+    }
+
+    .DrawContainer > div {
+        position: absolute;
+        background-color: #112d4e;
+        height: 100px;
+        width: 100px;
+    }
+
+    #d1 {
+        height: 7px;
+        bottom: 30px;
+        left: 10px;
+    }
+
+    #d2 {
+        width: 7px;
+        height: 340px;
+        bottom: 30px;
+        left: 55px;
+    }
+
+    #d3 {
+        width: 150px;
+        height: 7px;
+        top: 30px;
+        left: 55px;
+    }
+
+    #d4 {
+        width: 7px;
+        height: 80px;
+        top: 30px;
+        right: 95px;
+    }
+    #d5 {
+        width: 50px;
+        height: 50px;
+        background-color: transparent;
+        border-radius: 100%;
+        border: 5px solid #112d4e;
+        box-sizing: border-box;
+        top: 110px;
+        right: 73px;
+    }
+
+    #d6 {
+        width: 7px;
+        height: 115px;
+        top: 155px;
+        right: 95px;
+    }
+
+    #d7 {
+        width: 7px;
+        height: 60px;
+        top: 150px;
+        right: 115px;
+        transform: rotate(45deg);
+    }
+
+    #d8 {
+        width: 7px;
+        height: 60px;
+        top: 150px;
+        right: 75px;
+        transform: rotate(-45deg);
+    }
+
+    #d9 {
+        width: 7px;
+        height: 60px;
+        top: 255px;
+        right: 115px;
+        transform: rotate(45deg);
+    }
+
+    #d10 {
+        width: 7px;
+        height: 60px;
+        top: 255px;
+        right: 75px;
+        transform: rotate(-45deg);
+    }
+}
+
+.hide {
+    visibility: hidden;
+}
