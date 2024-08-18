@@ -7,12 +7,14 @@ import Header from "./Header.jsx";
 import End from "./End.jsx";
 import Loader from "./Loader.jsx";
 
+let score = 0;
+
 export default function App() {
     const [word, setWord] = useState([]);
     const [isHidden, setIsHidden] = useState({});
     const [toLose, setToLose] = useState(0);
     const [loader, setLoader] = useState(false);
-    const [score, setScore] = useState(0);
+    const [reset, setReset] = useState(0);
     let end = 0;
 
     function checkWinLose() {
@@ -21,6 +23,7 @@ export default function App() {
             if (isHidden[letter]) countFalse++;
         }
         end = toLose === 5 ? -1 : countFalse === 0 ? 1 : 0;
+        if (end) score = end === 1 ? score + 1 : 0;
     }
     if (Object.keys(isHidden).length) checkWinLose();
 
@@ -31,7 +34,7 @@ export default function App() {
     }
 
     function handleReset() {
-        setScore((score) => (end === 1 ? score + 1 : 0));
+        setReset(reset + 1);
         setIsHidden({});
         setWord([]);
         setToLose(0);
@@ -68,7 +71,7 @@ export default function App() {
             setLoader(false);
         }
         fetchWord();
-    }, [score]);
+    }, [reset]);
 
     return (
         <div className="app">
@@ -78,7 +81,11 @@ export default function App() {
             <End onEnd={end} />
             <Keyboard onChecking={checkExisting} onEnd={end} />
             <Draw onWrong={toLose} />
-            {loader ? <Loader /> : <Word word={word} isHidden={isHidden} />}
+            {loader ? (
+                <Loader />
+            ) : (
+                <Word word={word} isHidden={isHidden} onEnd={end} />
+            )}
         </div>
     );
 }

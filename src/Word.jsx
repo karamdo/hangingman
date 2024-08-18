@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import Letter from "./Letter.jsx";
 
-export default function Word({ word, isHidden }) {
+export default function Word({ word, isHidden, onEnd }) {
     return (
         <div className="word">
             {word.map((letter, index) => (
-                <Letter isHidden={isHidden[letter]} key={index}>
+                <Letter
+                    isHidden={onEnd ? false : isHidden[letter]}
+                    key={index}
+                    onEnd={onEnd}
+                >
                     {letter}
                 </Letter>
             ))}
