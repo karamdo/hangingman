@@ -36,7 +36,6 @@ export default function App() {
     function handleReset() {
         setReset(reset + 1);
         setIsHidden({});
-        setWord([]);
         setToLose(0);
     }
 
@@ -53,10 +52,7 @@ export default function App() {
             );
             const data = await res.json();
 
-            // console.log(data["word"][0].split(""));
-            // console.log(data.at("word").toUpperCase().split(""));
             const newWord = data["word"][0].toUpperCase().split("");
-            console.log(newWord);
             setWord(newWord);
             setIsHidden(
                 newWord.reduce(
@@ -79,13 +75,17 @@ export default function App() {
                 <Score score={score} />
             </Header>
             <End onEnd={end} />
-            <Keyboard onChecking={checkExisting} onEnd={end} />
-            <Draw onWrong={toLose} />
-            {loader ? (
-                <Loader />
-            ) : (
-                <Word word={word} isHidden={isHidden} onEnd={end} />
-            )}
+            <div className={`${loader ? "loader" : "main"}`}>
+                {loader ? (
+                    <Loader />
+                ) : (
+                    <>
+                        <Keyboard onChecking={checkExisting} onEnd={end} />
+                        <Draw onWrong={toLose} />
+                        <Word word={word} isHidden={isHidden} onEnd={end} />
+                    </>
+                )}
+            </div>
         </div>
     );
 }

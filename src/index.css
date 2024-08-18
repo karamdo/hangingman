@@ -15,13 +15,16 @@ body {
 .app {
     position: relative;
     padding: 30px;
-    display: grid;
-    grid-template-columns: 49% 49%;
-    gap: 20px;
     background-color: #dbe2ef;
     margin: 80px;
     height: 80dvh;
     border-radius: 10px;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 49% 49%;
+    gap: 20px;
 }
 
 .header {
@@ -36,7 +39,7 @@ body {
     left: 0;
     width: 100%;
     height: 50px;
-    background-color: #3f72af;
+    background-color: #4f82bf;
 }
 
 button {
@@ -53,7 +56,7 @@ button:hover {
     width: 100px;
     font-size: inherit;
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
     height: 40px;
     cursor: pointer;
 }
@@ -80,17 +83,28 @@ button:hover {
 .keyboard {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+    padding-inline: 20px;
 }
 
 .key {
     width: 80%;
     height: 80%;
     cursor: pointer;
-    border: none;
-    border-radius: 10px;
+    border: 1px solid #112d4e;
+    border-radius: 8px;
+}
+
+.after-click {
+    color: #112d4e55;
+    border: 1px solid #112d4e55;
+    cursor: auto;
+}
+.after-click:hover {
+    background-color: #dbe2ef;
 }
 
 .word {
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -98,7 +112,8 @@ button:hover {
 }
 
 .letter {
-    margin: 10px;
+    margin-inline: 10px;
+    font-size: 1.2rem;
 }
 
 .underline {
@@ -213,6 +228,8 @@ button:hover {
 }
 
 .loader {
-    justify-self: center;
-    align-self: center;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
