@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function Key({ children, onClick, isEnd }) {
+export default function Key({ children, onClick, onEnd }) {
     return (
         <>
-            {!isEnd ? (
+            {!onEnd ? (
                 <button className="key" onClick={() => onClick(children)}>
                     {children}
                 </button>
