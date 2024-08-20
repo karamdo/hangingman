@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Keyboard from "./Keyboard.jsx";
 import Draw from "./Draw.jsx";
 import Word from "./Word.jsx";
@@ -75,16 +75,18 @@ export default function App() {
                 <Score score={score} />
             </Header>
             <End onEnd={end} />
-            <div className={`${loader ? "loader" : "main"}`}>
-                {loader ? (
-                    <Loader />
-                ) : (
-                    <>
-                        <Keyboard onChecking={checkExisting} onEnd={end} />
-                        <Draw onWrong={toLose} />
-                        <Word word={word} isHidden={isHidden} onEnd={end} />
-                    </>
-                )}
+            <div className="main">
+                <div className={`${loader ? "loader" : "game"}`}>
+                    {loader ? (
+                        <Loader />
+                    ) : (
+                        <>
+                            <Keyboard onChecking={checkExisting} onEnd={end} />
+                            <Draw onWrong={toLose} />
+                            <Word word={word} isHidden={isHidden} onEnd={end} />
+                        </>
+                    )}
+                </div>
             </div>
         </div>
     );

@@ -1,3 +1,10 @@
+:root {
+    --font-color: #112d4e;
+    --font-color-used: #112d4e55;
+    --primary-color: #4f82bf;
+    --secondary-color: #dbe2ef;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,60 +12,62 @@
 }
 
 body {
-    height: 100vh;
-    font-size: 200%;
+    background-color: red;
+    height: 80vh;
     font-family: monospace;
-    color: #112d4e;
+    color: var(--font-color);
     background-color: #f9f7f7;
 }
 
+#root {
+    display: flex;
+    justify-content: center;
+}
+
 .app {
+    width: 1536px;
     position: relative;
-    padding: 30px;
-    background-color: #dbe2ef;
-    margin: 80px;
-    height: 80dvh;
-    border-radius: 10px;
+    font-size: 2rem;
 }
 
 .main {
+    width: 100%;
+    padding: 30px;
+    background-color: var(--secondary-color);
+    margin-top: 5%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.game {
+    width: 100%;
+    height: 100%;
     display: grid;
-    grid-template-columns: 49% 49%;
+    grid-template: 1fr 3fr 2fr / 60% 40%;
+    grid-template-areas:
+        "keys draw"
+        "keys draw"
+        "word draw";
     gap: 20px;
 }
 
 .header {
     display: flex;
-    border-bottom: 2px solid #112d4e;
+    border-bottom: 2px solid var(--font-color);
     align-items: center;
     justify-content: space-between;
-    font-size: 80%;
     padding: 0px 10px;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 50px;
-    background-color: #4f82bf;
-}
-
-button {
-    font: inherit;
-    color: #112d4e;
-    font-family: inherit;
-    background-color: #dbe2ef;
-}
-button:hover {
-    background-color: #b3c3e1;
+    height: 4dvw;
+    background-color: var(--primary-color);
 }
 
 .header button {
-    width: 100px;
-    font-size: inherit;
-    border: none;
-    border-radius: 8px;
-    height: 40px;
-    cursor: pointer;
+    width: 10%;
+    height: 80%;
 }
 
 .end {
@@ -67,7 +76,7 @@ button:hover {
     width: 80%;
     height: 80%;
     left: 10%;
-    top: 10%;
+    top: 20%;
     color: tomato;
     z-index: 1;
     background-color: #3f72af88;
@@ -81,34 +90,30 @@ button:hover {
 }
 
 .keyboard {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    padding-inline: 20px;
-}
-
-.key {
-    width: 80%;
     height: 80%;
-    cursor: pointer;
-    border: 1px solid #112d4e;
-    border-radius: 8px;
+    display: grid;
+    grid-template: repeat(5, 1fr) / repeat(6, 1fr);
+    grid-area: keys;
+    gap: 10px;
+    /* justify-items: center;
+    align-items: center; */
 }
 
 .after-click {
-    color: #112d4e55;
-    border: 1px solid #112d4e55;
+    color: var(--font-color-used);
+    border: 1px solid var(--font-color-used);
     cursor: auto;
 }
 .after-click:hover {
-    background-color: #dbe2ef;
+    background-color: var(--secondary-color);
 }
 
 .word {
-    height: 100px;
+    grid-area: word;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;
+    flex-wrap: wrap;
 }
 
 .letter {
@@ -123,18 +128,18 @@ button:hover {
 }
 
 .draw {
-    grid-row: span 2;
+    grid-area: draw;
     display: flex;
     justify-content: center;
     .DrawContainer {
-        width: 300px;
+        min-width: 300px;
         height: 400px;
         position: relative;
     }
 
     .DrawContainer > div {
         position: absolute;
-        background-color: #112d4e;
+        background-color: var(--font-color);
         height: 100px;
         width: 100px;
     }
@@ -170,7 +175,7 @@ button:hover {
         height: 50px;
         background-color: transparent;
         border-radius: 100%;
-        border: 5px solid #112d4e;
+        border: 5px solid var(--font-color);
         box-sizing: border-box;
         top: 110px;
         right: 73px;
@@ -221,10 +226,10 @@ button:hover {
 }
 
 .score {
-    outline: 2px solid #112d4e;
+    outline: 2px solid var(--font-color);
     border-radius: 5px;
     outline-offset: 2px;
-    margin-top: -2px;
+    height: 80%;
 }
 
 .loader {
@@ -232,4 +237,76 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 4rem;
+}
+
+button {
+    font: inherit;
+    color: var(--font-color);
+    font-family: inherit;
+    background-color: var(--secondary-color);
+    border: 1px solid var(--font-color);
+    cursor: pointer;
+    border-radius: 0.8rem;
+}
+button:hover {
+    background-color: #b3c3e1;
+}
+
+/* 2xl */
+@media (width < 1536px) {
+    .app {
+        max-width: 1280px;
+        font-size: 1.8rem;
+    }
+}
+
+/* xl */
+@media (width < 1280px) {
+    .app {
+        max-width: 1024px;
+        font-size: 1.6rem;
+    }
+}
+
+/* lg */
+@media (width < 1024px) {
+    .app {
+        max-width: 768px;
+        font-size: 1.2rem;
+    }
+}
+
+/* md */
+@media (width < 768px) {
+    .app {
+        max-width: 640px;
+        font-size: 1rem;
+    }
+    .game {
+        display: flex;
+        flex-direction: column;
+    }
+    .draw {
+        order: -1;
+    }
+    .keyboard {
+        gap: 3px;
+    }
+}
+
+/* sm */
+@media (width < 640px) {
+    .app {
+        max-width: 475px;
+        font-size: 0.7rem;
+    }
+}
+
+/* xs */
+@media (width < 475px) {
+    .app {
+        width: 100%;
+        font-size: 0.5rem;
+    }
 }
