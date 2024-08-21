@@ -27,14 +27,14 @@ body {
 .app {
     width: 1536px;
     position: relative;
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
 
 .main {
     width: 100%;
     padding: 30px;
     background-color: var(--secondary-color);
-    margin-top: 5%;
+    margin-top: 60px;
     height: 100%;
     border-radius: 10px;
 }
@@ -61,13 +61,13 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 4dvw;
+    height: 50px;
     background-color: var(--primary-color);
+    z-index: 2;
 }
 
 .header button {
-    width: 10%;
-    height: 80%;
+    padding: 10px;
 }
 
 .end {
@@ -228,8 +228,8 @@ body {
 .score {
     outline: 2px solid var(--font-color);
     border-radius: 5px;
-    outline-offset: 2px;
-    height: 80%;
+    display: flex;
+    align-items: center;
 }
 
 .loader {
@@ -257,7 +257,7 @@ button:hover {
 @media (width < 1536px) {
     .app {
         max-width: 1280px;
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 }
 
@@ -265,7 +265,7 @@ button:hover {
 @media (width < 1280px) {
     .app {
         max-width: 1024px;
-        font-size: 1.6rem;
+        font-size: 1.4rem;
     }
 }
 
@@ -281,7 +281,6 @@ button:hover {
 @media (width < 768px) {
     .app {
         max-width: 640px;
-        font-size: 1rem;
     }
     .game {
         display: flex;
@@ -293,12 +292,17 @@ button:hover {
     .keyboard {
         gap: 3px;
     }
+    .header {
+        font-size: 1rem;
+    }
 }
 
 /* sm */
 @media (width < 640px) {
     .app {
         max-width: 475px;
+    }
+    .header {
         font-size: 0.7rem;
     }
 }
@@ -307,6 +311,5 @@ button:hover {
 @media (width < 475px) {
     .app {
         width: 100%;
-        font-size: 0.5rem;
     }
 }

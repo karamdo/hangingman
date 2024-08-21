@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Keyboard from "./Keyboard.jsx";
 import Draw from "./Draw.jsx";
 import Word from "./Word.jsx";
+// eslint-disable-next-line no-unused-vars
 import Score from "./Score.jsx";
 import Header from "./Header.jsx";
 import End from "./End.jsx";
@@ -72,7 +73,7 @@ export default function App() {
     return (
         <div className="app">
             <Header onReset={handleReset}>
-                <Score score={score} />
+                {/* <Score score={score} /> */}
             </Header>
             <End onEnd={end} />
             <div className="main">
@@ -83,7 +84,12 @@ export default function App() {
                         <>
                             <Keyboard onChecking={checkExisting} onEnd={end} />
                             <Draw onWrong={toLose} />
-                            <Word word={word} isHidden={isHidden} onEnd={end} />
+                            <Word
+                                word={word}
+                                isHidden={isHidden}
+                                onEnd={end}
+                                reset={reset}
+                            />
                         </>
                     )}
                 </div>

@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Letter({ children, isHidden }) {
     return (
         <div className="letter">

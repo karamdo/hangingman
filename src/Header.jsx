@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Header({ onReset, children }) {
     return (
         <div className="header">

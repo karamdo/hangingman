@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Key({ children, onClick, onEnd, isDisable }) {
     function handleClick() {
         onClick(children);

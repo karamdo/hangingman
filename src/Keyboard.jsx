@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import Key from "./Key.jsx";
 
 const alphaBet = Array.from({ length: 26 }, (_, i) =>
@@ -7,13 +7,19 @@ const alphaBet = Array.from({ length: 26 }, (_, i) =>
 
 let isDisable = alphaBet.reduce((crr, res) => ({ ...crr, [res]: false }), {});
 
-export default function Keyboard({ onChecking, onEnd }) {
-    if (onEnd) {
-        isDisable = alphaBet.reduce(
-            (crr, res) => ({ ...crr, [res]: false }),
-            {}
-        );
-    }
+export default function Keyboard({ onChecking, onEnd, reset }) {
+    useEffect(() => {
+        function resetKeys() {
+            isDisable = alphaBet.reduce(
+                (crr, res) => ({ ...crr, [res]: false }),
+                {}
+            );
+        }
+        resetKeys();
+        return () => {
+            resetKeys();
+        };
+    }, [onEnd, reset]);
 
     function handleClick(letter) {
         isDisable[letter] = true;
